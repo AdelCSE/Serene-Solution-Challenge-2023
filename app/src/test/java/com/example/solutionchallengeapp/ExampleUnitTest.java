@@ -1,4 +1,4 @@
-package com.example.solutionchallegeapp;
+package com.example.solutionchallengeapp;
 
 import org.junit.Test;
 

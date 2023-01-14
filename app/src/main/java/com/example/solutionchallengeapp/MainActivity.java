@@ -1,4 +1,4 @@
-package com.example.solutionchallegeapp;
+package com.example.solutionchallengeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
