@@ -27,9 +27,9 @@ public class UserModel implements Serializable {
         Date = date;
     }
 
-    public String getAbout() {
-        return About;
-    }
+    public UserModel(){}
+
+    public String getAbout() { return About; }
 
     public void setAbout(String about) {
         About = about;
@@ -50,15 +50,6 @@ public class UserModel implements Serializable {
     public void setCauses(ArrayList<String> causes) {
         Causes = causes;
     }
-
-    //This is for the first registration
-    public UserModel(String userId, String name, String email) {
-        UserId = userId;
-        Name = name;
-        Email = email;
-    }
-
-    public UserModel(){}
 
     public String getUserId() {
         return UserId;
