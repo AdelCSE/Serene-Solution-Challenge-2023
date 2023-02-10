@@ -10,12 +10,17 @@ import android.view.ViewGroup;
 
 import com.example.solutionchallengeapp.R;
 
+
 public class HomeFragment extends Fragment {
+
+    private View root;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        root = inflater.inflate(R.layout.fragment_home, container, false);
 
+
+        return root;
     }
 }

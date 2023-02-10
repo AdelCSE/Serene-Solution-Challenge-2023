@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterSuitActivity2">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:progress="66"
+        app:trackCornerRadius="30dp"
+        android:background="#EEEEEE"
+        android:progressTint="@color/PrimaryGreen"/>
+
+    <TextView
+        android:id="@+id/roleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="98dp"
+        android:fontFamily="@font/montserrat_semi_bold"
+        android:text="Select Your Role"
+        android:textColor="@color/black"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/roleDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/roleText"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Please choose the option that best describes you !"
+        android:textSize="16sp" />
+
+    <RadioGroup
+        android:id="@+id/radio_grp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roleDesc"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_organisation"
+            android:layout_width="150dp"
+            android:layout_height="112dp"
+            android:button="@null"
+            android:background="@drawable/radio_selector"
+            android:drawableTop="@drawable/ic_organisation"
+            android:textAlignment="center"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:textColor="@drawable/custom_radio_text"
+            android:text="Organisation" />
+
+        <RadioButton android:id="@+id/radio_volunteer"
+            android:layout_width="150dp"
+            android:layout_height="112dp"
+            android:drawableTop="@drawable/ic_volunteer"
+            android:background="@drawable/radio_selector"
+            android:layout_marginLeft="24dp"
+            android:button="@null"
+            android:textAlignment="center"
+            android:text="Volunteer"
+            android:textColor="@drawable/custom_radio_text"
+            android:fontFamily="@font/montserrat_semi_bold" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/causesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/radio_grp"
+        android:fontFamily="@font/montserrat_semi_bold"
+        android:text="Choose Your Causes"
+        android:textColor="@color/black"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/causesDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/causesText"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="What causes do you care about?"
+        android:textSize="16sp" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/causesChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/causesDesc"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cause1"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="Cause 1"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cause2"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="Cause 2"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cause3"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="Cause 3"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cause4"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="Cause 4"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cause5"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="Cause 5"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cause6"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="Cause 6"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cause7"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="Cause 7"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cause8"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="Cause 8"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cause9"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="Cause 9"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cause10"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="Cause 10"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/black"
+            app:chipStrokeWidth="1dp" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/join_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/causesChipGroup"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/green_button"
+        android:text="JOIN NOW"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white" />
+
+    <ProgressBar
+        android:id="@+id/registrationSuit2ProgressBar"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/join_button"
+        android:layout_marginTop="24dp"
+        android:visibility="gone"/>
+
+
+</RelativeLayout>
