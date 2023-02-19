@@ -41,6 +41,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -170,6 +171,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                             userModel = doc.toObject(UserModel.class);
                                             String username = userModel.getUsername();
                                             ArrayList<String> causes = userModel.getCauses();
+
+                                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                            intent.putExtra("UserInfos", (Serializable) userModel);
+
                                             if (username == null) {
                                                 startActivity(new Intent(RegisterActivity.this, RegisterSuitActivity.class));
                                                 finish();
@@ -177,7 +182,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                                 startActivity(new Intent(RegisterActivity.this, RegisterSuitActivity2.class));
                                                 finish();
                                             } else {
-                                                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                                startActivity(intent);
                                                 finish();
                                             }
                                         }else{

@@ -44,6 +44,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -205,6 +206,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                             userModel = doc.toObject(UserModel.class);
                                             String username = userModel.getUsername();
                                             ArrayList<String> causes = userModel.getCauses();
+                                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                            intent.putExtra("UserInfos", (Serializable) userModel);
+
                                             if (username == null) {
                                                 startActivity(new Intent(LoginActivity.this, RegisterSuitActivity.class));
                                                 finish();
@@ -212,7 +216,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                 startActivity(new Intent(LoginActivity.this, RegisterSuitActivity2.class));
                                                 finish();
                                             } else {
-                                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                                startActivity(intent);
                                                 finish();
                                             }
                                         }else{
@@ -268,6 +272,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                 String username = userModel.getUsername();
                                                 ArrayList<String> causes = userModel.getCauses();
                                                 progressBar.setVisibility(View.GONE);
+
+                                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                intent.putExtra("UserInfos", (Serializable) userModel);
+
                                                 if (username == null) {
                                                     startActivity(new Intent(LoginActivity.this,RegisterSuitActivity.class));
                                                     finish();
@@ -276,7 +284,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                     startActivity(new Intent(LoginActivity.this,RegisterSuitActivity2.class));
                                                     finish();
                                                 }else{
-                                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                                    startActivity(intent);
                                                     finish();
                                                 }
                                             }
@@ -311,12 +319,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                                     if (task.isSuccessful()) {
                                                         ArrayList<String> causes = userModel.getCauses();
+                                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                        intent.putExtra("UserInfos", (Serializable) userModel);
+
                                                         if (causes.size()>0){
                                                             progressBar.setVisibility(View.GONE);
                                                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                                             finish();
                                                         }else{
-                                                            startActivity(new Intent(LoginActivity.this,RegisterSuitActivity2.class));
+                                                            startActivity(intent);
                                                             finish();
                                                         }
 
@@ -363,9 +374,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                             public void onComplete(@NonNull Task<AuthResult> task) {
                                                 if (task.isSuccessful()){
                                                     ArrayList<String> causes = userModel.getCauses();
+                                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                    intent.putExtra("UserInfos", (Serializable) userModel);
+
                                                     if (causes.size()>0) {
                                                         progressBar.setVisibility(View.GONE);
-                                                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                                        startActivity(intent);
                                                         finish();
                                                     }else {
                                                         progressBar.setVisibility(View.GONE);

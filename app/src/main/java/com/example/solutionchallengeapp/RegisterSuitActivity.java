@@ -181,6 +181,7 @@ public class RegisterSuitActivity extends AppCompatActivity implements View.OnCl
             countryLayout.setError(null);
         }
 
+        progressBar.setVisibility(View.VISIBLE);
         DocumentReference df = db.collection("users").document(CurrentUser.getUid());
 
         df.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.solutionchallengeapp.Models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,6 +25,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -142,16 +144,20 @@ public class RegisterSuitActivity2 extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
                     DocumentSnapshot doc = task.getResult();
+                    UserModel userModel = doc.toObject(UserModel.class);
                     if (doc.exists()) {
                         HashMap<String, Object> user = new HashMap<>();
                         user.put("IsOrganisation", IsOrganisation);
                         user.put("Causes", selectedCauses);
 
+                        Intent intent = new Intent(RegisterSuitActivity2.this,MainActivity.class);
+                        intent.putExtra("UserInfos", (Serializable) userModel);
+
                         df.update(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 progressBar.setVisibility(View.GONE);
-                                startActivity(new Intent(RegisterSuitActivity2.this,MainActivity.class));
+                                startActivity(intent);
                                 finish();
 
                             }

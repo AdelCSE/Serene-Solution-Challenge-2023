@@ -1,11 +1,16 @@
 package com.example.solutionchallengeapp.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import com.google.firebase.Timestamp;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class UserModel implements Serializable {
+public class UserModel implements Serializable, Parcelable {
     private String UserId, Name, Username, Email, Location, Phone, ProfilePic, About;
     private ArrayList<String> Followings,Followers,Causes;
     private Boolean IsOrganisation;
@@ -28,6 +33,35 @@ public class UserModel implements Serializable {
     }
 
     public UserModel(){}
+
+    protected UserModel(Parcel in) {
+        UserId = in.readString();
+        Name = in.readString();
+        Username = in.readString();
+        Email = in.readString();
+        Location = in.readString();
+        Phone = in.readString();
+        ProfilePic = in.readString();
+        About = in.readString();
+        Followings = in.createStringArrayList();
+        Followers = in.createStringArrayList();
+        Causes = in.createStringArrayList();
+        byte tmpIsOrganisation = in.readByte();
+        IsOrganisation = tmpIsOrganisation == 1;
+        Date = in.readParcelable(Timestamp.class.getClassLoader());
+    }
+
+    public static final Creator<UserModel> CREATOR = new Creator<UserModel>() {
+        @Override
+        public UserModel createFromParcel(Parcel in) {
+            return new UserModel(in);
+        }
+
+        @Override
+        public UserModel[] newArray(int size) {
+            return new UserModel[size];
+        }
+    };
 
     public String getAbout() { return About; }
 
@@ -129,5 +163,27 @@ public class UserModel implements Serializable {
 
     public void setDate(Timestamp date) {
         Date = date;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(UserId);
+        dest.writeString(Name);
+        dest.writeString(Username);
+        dest.writeString(Email);
+        dest.writeString(Location);
+        dest.writeString(Phone);
+        dest.writeString(ProfilePic);
+        dest.writeString(About);
+        dest.writeParcelable(Date, flags);
+        dest.writeStringList(Followings);
+        dest.writeStringList(Followers);
+        dest.writeStringList(Causes);
+
     }
 }

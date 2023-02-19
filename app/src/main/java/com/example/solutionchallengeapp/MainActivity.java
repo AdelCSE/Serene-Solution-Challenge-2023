@@ -8,18 +8,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.solutionchallengeapp.BottomNavigationFragments.CharityFragment;
 import com.example.solutionchallengeapp.BottomNavigationFragments.HomeFragment;
 import com.example.solutionchallengeapp.BottomNavigationFragments.NotificationsFragment;
 import com.example.solutionchallengeapp.BottomNavigationFragments.ProfileFragment;
+import com.example.solutionchallengeapp.Models.UserModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNav;
     private FloatingActionButton fab;
+    private UserModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         //Here we're setting the Home fragment as default fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragmentContainer,
                 new HomeFragment()).commit();
+
 
         //Start NearbyActivity
         fab.setOnClickListener(new View.OnClickListener() {
