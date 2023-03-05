@@ -33,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
         bottomNav = findViewById(R.id.bottomNavigationLayout);
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
+        userModel = (UserModel) getIntent().getSerializableExtra("UserInfos");
+
+        if (userModel!=null){
+            if(!userModel.getOrganisation()) {
+                fab.setImageResource(R.drawable.plus);
+            }else {
+                fab.setImageResource(R.drawable.ic_maps);
+            }
+        }
+
         //setEnabled(false) for the 2nd index because we're using a floating button instead
         bottomNav.setBackground(null);
         bottomNav.getMenu().getItem(2).setEnabled(false);
@@ -47,7 +57,13 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), NearbyActivity.class));
+                if (userModel!=null){
+                    if(!userModel.getOrganisation()) {
+                        startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
+                    }else {
+                        startActivity(new Intent(getApplicationContext(), NearbyActivity.class));
+                    }
+                }
             }
         });
 
