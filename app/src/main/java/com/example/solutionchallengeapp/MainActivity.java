@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (userModel!=null){
             if(!userModel.getOrganisation()) {
-                fab.setImageResource(R.drawable.plus);
-            }else {
                 fab.setImageResource(R.drawable.ic_maps);
+            }else {
+                fab.setImageResource(R.drawable.plus);
             }
         }
 
@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (userModel!=null){
                     if(!userModel.getOrganisation()) {
-                        startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
-                    }else {
                         startActivity(new Intent(getApplicationContext(), NearbyActivity.class));
+                    }else {
+                        startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
                     }
                 }
             }

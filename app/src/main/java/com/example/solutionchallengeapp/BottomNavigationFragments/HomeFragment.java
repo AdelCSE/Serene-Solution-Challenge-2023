@@ -18,11 +18,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.solutionchallengeapp.Adapters.EventsAdapter;
+import com.example.solutionchallengeapp.GetStartedActivity;
 import com.example.solutionchallengeapp.Models.EventModel;
 import com.example.solutionchallengeapp.Models.UserModel;
 import com.example.solutionchallengeapp.R;
 import com.example.solutionchallengeapp.SearchActivity;
 import com.example.solutionchallengeapp.SettingsActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -51,6 +55,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private FirebaseUser CurrentUser;
     private FirebaseFirestore db;
+
+    private GoogleSignInClient mGoogleSignInClient;
 
 
     @Override
@@ -105,17 +111,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     });
         }
 
-        EventModel event1 = new EventModel("e01","u01","title1","about1","name1","location1","https://firebasestorage.googleapis.com/v0/b/solution-challenge-2023.appspot.com/o/profileImages%2Fi3byz6zfDuNZ2uT9skLbx5NqjQ93?alt=media&token=8924c6c8-1731-4e9e-9212-564e03623c72",null,120,"Feb 14th, 2023");
-        EventModel event2 = new EventModel("e02","u02","title2","about2","name2","location2","https://firebasestorage.googleapis.com/v0/b/solution-challenge-2023.appspot.com/o/profileImages%2Fi3byz6zfDuNZ2uT9skLbx5NqjQ93?alt=media&token=8924c6c8-1731-4e9e-9212-564e03623c72",null,120,"Feb 14th, 2023");
-        EventModel event3 = new EventModel("e03","u03","title3","about3","name3","location3","https://firebasestorage.googleapis.com/v0/b/solution-challenge-2023.appspot.com/o/profileImages%2Fi3byz6zfDuNZ2uT9skLbx5NqjQ93?alt=media&token=8924c6c8-1731-4e9e-9212-564e03623c72",null,120,"Feb 14th, 2023");
-        EventModel event4 = new EventModel("e04","u04","title4","about4","name4","location4","https://firebasestorage.googleapis.com/v0/b/solution-challenge-2023.appspot.com/o/profileImages%2Fi3byz6zfDuNZ2uT9skLbx5NqjQ93?alt=media&token=8924c6c8-1731-4e9e-9212-564e03623c72",null,120,"Feb 14th, 2023");
+        EventModel event1 = new EventModel("e01","u01","Food for Thought: Join the Drive to Stock Up for Those in Need","about1","Croissant Rouge Algerien","location1","https://firebasestorage.googleapis.com/v0/b/solution-challenge-2023.appspot.com/o/profileImages%2Fjoel-muniz-3k3l2brxmwQ-unsplash.jpg?alt=media&token=b08f1a5d-f766-44c1-bbf4-66797bd8bf49","https://firebasestorage.googleapis.com/v0/b/solution-challenge-2023.appspot.com/o/profileImages%2F%D8%A7%D9%84%D9%87%D9%84%D8%A7%D9%84_%D8%A7%D9%84%D8%A3%D8%AD%D9%85%D8%B1_%D8%A7%D9%84%D8%AC%D8%B2%D8%A7%D8%A6%D8%B1%D9%8A.jpg?alt=media&token=45409a20-1b15-4bc0-a384-07ac701801c6",120,"Feb 04th, 2023 • 9:30 AM");
+        EventModel event2 = new EventModel("e02","u02","Beach Clean-Up Brigade: Join the Effort to Keep Our Coasts Beautiful","about2","Croissant Rouge Algerien","location2","https://firebasestorage.googleapis.com/v0/b/solution-challenge-2023.appspot.com/o/profileImages%2Fbrian-yurasits-PzQNdXw2a6g-unsplash.jpg?alt=media&token=99c42f38-846b-4f69-8443-23b52937e24f","https://firebasestorage.googleapis.com/v0/b/solution-challenge-2023.appspot.com/o/profileImages%2F%D8%A7%D9%84%D9%87%D9%84%D8%A7%D9%84_%D8%A7%D9%84%D8%A3%D8%AD%D9%85%D8%B1_%D8%A7%D9%84%D8%AC%D8%B2%D8%A7%D8%A6%D8%B1%D9%8A.jpg?alt=media&token=45409a20-1b15-4bc0-a384-07ac701801c6",120,"Feb 14th, 2023 • 8:00 AM");
+        EventModel event3 = new EventModel("e03","u03","Help Distribute Food and Bring Smiles to Our Community","about3","Croissant Rouge Algerien","location3","https://firebasestorage.googleapis.com/v0/b/solution-challenge-2023.appspot.com/o/profileImages%2Fjoel-muniz-A4Ax1ApccfA-unsplash.jpg?alt=media&token=8bd45bc5-b874-454a-a25d-9cd5df659167","https://firebasestorage.googleapis.com/v0/b/solution-challenge-2023.appspot.com/o/profileImages%2F%D8%A7%D9%84%D9%87%D9%84%D8%A7%D9%84_%D8%A7%D9%84%D8%A3%D8%AD%D9%85%D8%B1_%D8%A7%D9%84%D8%AC%D8%B2%D8%A7%D8%A6%D8%B1%D9%8A.jpg?alt=media&token=45409a20-1b15-4bc0-a384-07ac701801c6",120,"Mar 31th, 2023 • 12:00 PM");
         EventsDataHolder = new ArrayList<EventModel>();
         EventsDataHolder.add(event1);
         EventsDataHolder.add(event2);
         EventsDataHolder.add(event3);
-        EventsDataHolder.add(event4);
 
         BuildRecyclerView();
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.
+                Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                build();
+
+        mGoogleSignInClient= GoogleSignIn.getClient(getActivity(),gso);
 
         return root;
 
@@ -129,7 +139,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), SearchActivity.class));
                 break;
             case R.id.settingsBtn:
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                logoutUser();
+                //startActivity(new Intent(getActivity(), SettingsActivity.class));
         }
     }
 
@@ -138,5 +149,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         eventsAdapter = new EventsAdapter(EventsDataHolder, getContext());
         recyclerView.setAdapter(eventsAdapter);
+    }
+
+    private void logoutUser() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(getActivity(), GetStartedActivity.class));
+                        getActivity().finish();
+                    }
+                });
     }
 }
