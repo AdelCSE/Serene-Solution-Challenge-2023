@@ -24,7 +24,7 @@ $ git clone https://github.com/AdelCSE/Serene-Solution-Challenge-2023.git
 This project is mantained by:
 - [Adel Mokadem](https://github.com/AdelCSE)
 - [Ines BELOUAD](https://github.com/ines-bld)
-- [Benounene Abdelrahmane](https://github.com/abderrahmenex86)
+- [Abdelrahmane Benounene](https://github.com/abderrahmenex86)
 - [Ibtihal Hattabi](https://github.com/1b71h3l)
 
 ## Contributing
