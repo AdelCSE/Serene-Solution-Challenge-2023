@@ -1,6 +1,9 @@
 # Serene-Solution-Challenge-2023
 Serene is an Android application made using Java. This project provides a solution to three of the Sustainable Development Goals (UN SDG), dedicated to our participation in the Solution Challenge 2023
 
+## Demo Video
+[![Seren - GDSC Solution Challenge 2023](http://img.youtube.com/vi/GRI5KrdTuGU/0.jpg)](https://youtu.be/GRI5KrdTuGU)
+
 ## Installation
 1. Download and install [Android Studio](https://developer.android.com/studio) (recommended)
 2. Clone this repository and import it into Android Studio:
